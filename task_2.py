@@ -8,9 +8,6 @@ def logger(path):
         @wraps(old_function)
         def new_function(*args, **kwargs):
             result = old_function(*args, **kwargs)
-            if not os.path.exists(path):
-                x = open(path, "w")
-                x.close()
             with open(path, 'a', encoding='utf-8') as file:
                 file.write(f'''
                             Дата и время вызова функции: {datetime.datetime.now()}, 
